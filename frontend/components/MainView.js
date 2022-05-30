@@ -1,8 +1,18 @@
 import React from 'react'
+import SignUp from '../components/SignUp'
 
+let isAccount = false;
 const MainView = () => {
     return (
-        <div>MainView</div>
+        <>
+            {isAccount ? (
+                <div>
+                    {/* TikToks will go here */}
+                </div>
+            ) : (
+                <SignUp />
+            )}
+        </>
     )
 }
 
