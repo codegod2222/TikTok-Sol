@@ -1,7 +1,14 @@
-import React from 'react'
+import { useState } from 'react'
 import styles from '../styles/SignUp.module.css'
 
-const SignUp = () => {
+const SignUp = ({ signUp }) => {
+  const [username, setUserName] = useState()
+  const [profile, setProfile] = useState()
+
+  const signUpClick = () => {
+    signUp(username, profile)
+  }
+
   return (
     <div className={styles.authContainer}>
       <h1 className={styles.title}>Sign up to use TikTok</h1>
@@ -12,7 +19,7 @@ const SignUp = () => {
             <input
               className={styles.input}
               type='text'
-            // onChange={}
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
           <div className={styles.inputField}>
@@ -21,13 +28,13 @@ const SignUp = () => {
               <input
                 className={styles.input}
                 type="text"
-              // onChange={}
+                onChange={(e) => setProfile(e.target.value)}
               />
             </div>
           </div>
         </div>
       </div>
-      <div className={styles.loginButton}>Sign Up</div>
+      <div onClick={signUpClick} className={styles.loginButton}>Sign Up</div>
     </div >
   )
 }

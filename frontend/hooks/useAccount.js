@@ -20,7 +20,7 @@ const useAccount = () => {
   const connection = new anchor.web3.Connection(SOLANA_HOST)
   const program = getProgramInstance(connection, wallet)
 
-  const signup = async (name, profile) => {
+  const signUp = async (name, profile) => {
     let [user_pda] = await anchor.web3.PublicKey.findProgramAddress(
       [utf8.encode('user'), wallet.publicKey.toBuffer()],
       program.programId
@@ -28,9 +28,12 @@ const useAccount = () => {
     await program.rpc.createUser(name, profile, {
       accounts: {
         user: user_pda,
-        authority: wallet.publicKey, ...defaultAccounts;
+        authority: wallet.publicKey, ...defaultAccounts
       }
     })
+    console.log('User signed up')
   }
-  return { signup }
+
+  return { signUp }
 }
+export default useAccount
