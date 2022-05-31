@@ -1,0 +1,12 @@
+.appVideos { 
+
+}
+
+.appVideos::webkit-scrollbar { 
+  display: none;
+}
+
+.appVideos { 
+  -ms-overflow-style: none;
+  scrollbar-width:  none;
+}

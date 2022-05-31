@@ -7,6 +7,9 @@ import useAccount from '../hooks/useAccount'
 import styles from '../styles/MainView.module.css'
 import SignUp from '../components/SignUp'
 import useTikTok from '../hooks/useTikTok';
+import Video from './Video';
+import UploadModal from './UploadModal';
+import BottomBar from './BottomBar';
 
 const anchor = require('@project-serum/anchor')
 const utf8 = anchor.utils.bytes.utf8
@@ -26,7 +29,7 @@ const MainView = () => {
     const connection = new anchor.web3.Connection(SOLANA_HOST)
 
     const program = getProgramInstance(connection, wallet)
-    const [tiktoks, setTiktoks] = useState()
+    const [tiktoks, setTiktoks] = useState([])
     const [newVideoShow, setNewVideoShow] = useState(false)
     const [description, setDescription] = useState('')
     const [videoUrl, setVideoUrl] = useState('')
@@ -69,7 +72,32 @@ const MainView = () => {
         <>
             {isAccount ? (
                 <div>
-                    TikToks will go here
+                    {newVideoShow && (
+                        <UploadModal />
+                    )}
+                    <div className={styles.appVideos}>
+                        {tiktoks.length === 0 ? (
+                            <h1>No Videos</h1>
+                        ) : (
+                            tiktoks.map((tiktok, id) => {
+                                <Video
+                                    key={id}
+                                    address={tiktok.publicKey.toBase58()}
+                                    url={tiktok.account.videoUrl}
+                                    channel={tiktok.account.creatorName}
+                                    index={tiktok.account.index.toNumber()}
+                                    likes={tiktok.account.likes}
+                                    description={tiktok.account.description}
+                                    likeVideo={likeVideo}
+                                    likesAddress={tiktok.account.peopleWhoLiked}
+                                    createComment={createComment}
+                                    getComments={getComments}
+                                    commentCount={tiktok.account.commentCount.toNumber()}
+                                />
+                            })
+                        )}
+                    </div>
+                    <BottomBar />
                 </div>
             ) : (
                 <SignUp signUp={signUp} wallet={wallet.publicKey.toBase58()} />
