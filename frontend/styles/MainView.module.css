@@ -1,8 +1,15 @@
 .appVideos { 
-
+  position: relative;
+  height: 800px;
+  border-radius: 20px 20px 0 0;
+  margin-left:  47px;
+  overflow: scroll;
+  width: 80%;
+  max-width: 500px;
+  scroll-snap-type:  y mandatory;
 }
 
-.appVideos::webkit-scrollbar { 
+.appVideos::-webkit-scrollbar { 
   display: none;
 }
 

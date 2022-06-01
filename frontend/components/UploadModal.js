@@ -16,8 +16,8 @@ function UploadModal({
         <div className={styles.inputTitle}>Description</div>
         <div className={styles.inputContainer}>
           <input
-            type="text"
             className={styles.input}
+            type='text'
             value={description}
             onChange={e => setDescription(e.target.value)}
           />
@@ -28,27 +28,29 @@ function UploadModal({
         <div className={styles.inputContainer}>
           <input
             className={styles.input}
+            type='text'
             value={videoUrl}
             onChange={e => setVideoUrl(e.target.value)}
-            type="text"
           />
         </div>
-        <div className={styles.modalButton}>
-          <button
-            onClick={() => setNewVideoShow(false)}
-            className={`${styles.button} ${styles.cancel}`}
-          >
-            Cancel
-          </button>
-          <button
-            onClick={newVideo}
-            className={`${styles.button} ${styles.createButton}`}>
-            Create
-          </button>
-        </div>
+      </div>
+      <div className={styles.modalButtons}>
+        <button
+          onClick={() => setNewVideoShow(false)}
+          className={`${styles.button} ${styles.cancelButton}`}
+        >
+          Cancel
+        </button>
+        <button
+          onClick={newVideo}
+          className={`${styles.button} ${styles.createButton}`}
+        >
+          Create New
+        </button>
       </div>
     </div>
   )
 }
+
 
 export default UploadModal
