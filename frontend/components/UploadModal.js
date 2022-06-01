@@ -4,6 +4,7 @@ import styles from '../styles/UploadModal.module.css'
 function UploadModal({
   description,
   videoUrl,
+  newVideo,
   setDescription,
   setVideoUrl,
   setNewVideoShow

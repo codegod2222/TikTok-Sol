@@ -75,11 +75,11 @@ const MainView = () => {
                     {newVideoShow && (
                         <UploadModal
                             description={description}
-                            videoUrl={videoUrl}
+                            newVideo={newVideo}
+                            newVideoShow={newVideoShow}
                             setDescription={setDescription}
-                            setVideoUrl={setVideoUrl}
                             setNewVideoShow={setNewVideoShow}
-
+                            setVideoUrl={setVideoUrl}
                         />
                     )}
                     <div className={styles.appVideos}>
@@ -104,7 +104,10 @@ const MainView = () => {
                             })
                         )}
                     </div>
-                    <BottomBar />
+                    <BottomBar
+                        setNewVideoShow={setNewVideoShow}
+                        getTikToks={getTikToks}
+                    />
                 </div>
             ) : (
                 <SignUp signUp={signUp} wallet={wallet.publicKey.toBase58()} />
