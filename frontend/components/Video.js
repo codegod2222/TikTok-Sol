@@ -4,7 +4,6 @@ import Sidebar from './Sidebar'
 import Footer from './Footer'
 import Comments from './Comments'
 const Video = ({
-  address,
   key,
   url,
   channel,
@@ -44,14 +43,12 @@ const Video = ({
   return (
     // TODO:- Video iFrame Bug, hardcoded the URL.
     <div className={styles.wrapper}>
-      {console.log(url)}
-      {console.log('hi')}
       <video
         className={styles.videoPlayer}
         loop
         onClick={onVideoPress}
         ref={videoRef}
-        src={url}
+        src={'https://v16m-webapp.tiktokcdn-us.com/968bccaa06208f8540f0c60aab2bff10/6298411f/video/tos/useast5/tos-useast5-pve-0068-tx/fc3d314f3c7b4858b8ad9a3a638ff659/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=2294&bt=1147&cs=0&ds=3&ft=ebtHKH-qMyq8ZT6cvwe2NlF~fl7Gb&mime_type=video_mp4&qs=0&rc=aWhnOmhkNTVnOWk3ZWY0M0BpM250ZzQ6ZnM5ZDMzZzczNEAyYWBgMDQ2XzQxM14yYy4vYSNxNmBncjRfMF9gLS1kMS9zcw%3D%3D&l=2022060122472401000200300200500600300303C214B0'}
         style={{ objectFit: 'cover' }}
       />
       <Footer
@@ -59,7 +56,7 @@ const Video = ({
         description={description}
         song={index}
       />
-      <SideBar
+      {/* <SideBar
         address={address}
         likes={likes}
         shares={shares}
@@ -68,7 +65,7 @@ const Video = ({
         index={index}
         likesAddress={likesAddress}
         messages={commentCount}
-      />
+      /> */}
       {showCommentsModal && (
         <Comments
           onHide={hideComments}

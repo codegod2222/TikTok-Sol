@@ -83,11 +83,12 @@ const MainView = () => {
                     )}
                     <div className={styles.appVideos}>
                         {tiktoks.length === 0 ? (
-                            <h1>No Videos</h1>
+                            // <h1>No Videos</h1>
+                            <Video
+                            />
                         ) : (
                             tiktoks.map((tiktok, id) => {
                                 return <Video
-                                    address={tiktok.address}
                                     key={id}
                                     url={tiktok.account.videoUrl}
                                     channel={tiktok.account.creatorName}

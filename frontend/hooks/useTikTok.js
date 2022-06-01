@@ -30,7 +30,6 @@ const useTikTok = (
 
   const getTikToks = async () => {
     const videos = await program.account.videoAccount.all()
-    console.log(videos)
     setTikToks(videos)
   }
   // LikeVideo from smartContract
@@ -50,7 +49,7 @@ const useTikTok = (
       program.programId
     )
 
-    console.log(program)
+
     const tx = await program.rpc.createVideo(
       description,
       videoUrl,
@@ -65,7 +64,7 @@ const useTikTok = (
         }
       }
     )
-    console.log(tx)
+
     setDescription('')
     setVideoUrl('')
     setNewVideoShow(false)
