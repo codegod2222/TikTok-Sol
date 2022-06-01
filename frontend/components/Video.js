@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import styles from '../styles/Video.module.css'
-
+import Sidebar from './Sidebar'
+import Footer from './Footer'
+import Comments from './Comments'
 const Video = ({
   address,
   key,
@@ -68,7 +70,7 @@ const Video = ({
         messages={commentCount}
       />
       {showCommentsModal && (
-        <Comment
+        <Comments
           onHide={hideComments}
           index={index}
           address={address}
