@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import styles from '../styles/Video.module.css'
 
 const Video = ({
+  address,
   key,
   url,
   channel,
@@ -39,7 +40,7 @@ const Video = ({
   }
 
   return (
-
+    // TODO:- Video iFrame Bug, hardcoded the URL.
     <div className={styles.wrapper}>
       {console.log(url)}
       {console.log('hi')}
@@ -51,11 +52,30 @@ const Video = ({
         src={url}
         style={{ objectFit: 'cover' }}
       />
-      {/* Footer */}
-
-      {/* SideBar */}
+      <Footer
+        channel={channel}
+        description={description}
+        song={index}
+      />
+      <SideBar
+        address={address}
+        likes={likes}
+        shares={shares}
+        onShowComments={showComments}
+        likeVideo={likeVideo}
+        index={index}
+        likesAddress={likesAddress}
+        messages={commentCount}
+      />
       {showCommentsModal && (
-        <Comment />
+        <Comment
+          onHide={hideComments}
+          index={index}
+          address={address}
+          createComment={createComment}
+          getComments={getComments}
+          commentCount={commentCount}
+        />
       )}
     </div>
   )

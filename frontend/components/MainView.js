@@ -86,8 +86,8 @@ const MainView = () => {
                             <h1>No Videos</h1>
                         ) : (
                             tiktoks.map((tiktok, id) => {
-                                // { console.log(tiktok.account.videoUrl) }
                                 return <Video
+                                    address={tiktok.address}
                                     key={id}
                                     url={tiktok.account.videoUrl}
                                     channel={tiktok.account.creatorName}

@@ -9,6 +9,7 @@ function UploadModal({
   setVideoUrl,
   setNewVideoShow
 }) {
+  // dismiss Modal
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>Upload New Video</div>
