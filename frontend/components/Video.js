@@ -41,7 +41,8 @@ const Video = ({
   return (
 
     <div className={styles.wrapper}>
-      {/* {console.log(url)} */}
+      {console.log(url)}
+      {console.log('hi')}
       <video
         className={styles.videoPlayer}
         loop
