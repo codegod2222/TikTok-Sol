@@ -3,18 +3,19 @@ import styles from '../styles/Video.module.css'
 
 const Video = ({
   key,
-  address,
   url,
   channel,
   index,
   likes,
   description,
+  shares,
   likeVideo,
   likesAddress,
   createComment,
   getComments,
   commentCount
 }) => {
+
   const [playing, setPlaying] = useState(false)
   const [showCommentsModal, setShowCommentsModal] = useState(false)
   const videoRef = useRef(null)
@@ -38,7 +39,9 @@ const Video = ({
   }
 
   return (
+
     <div className={styles.wrapper}>
+      {/* {console.log(url)} */}
       <video
         className={styles.videoPlayer}
         loop
@@ -50,7 +53,6 @@ const Video = ({
       {/* Footer */}
 
       {/* SideBar */}
-
       {showCommentsModal && (
         <Comment />
       )}

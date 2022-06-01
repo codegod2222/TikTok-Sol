@@ -29,10 +29,7 @@ const useTikTok = (
   const program = getProgramInstance(connection, wallet)
 
   const getTikToks = async () => {
-    console.log('fetching')
-
     const videos = await program.account.videoAccount.all()
-    console.log(videos)
 
     setTikToks(videos)
   }
@@ -56,8 +53,8 @@ const useTikTok = (
     const tx = await program.rpc.createVideo(
       description,
       videoUrl,
-      userDetail.userName,
-      userDetail.userProfileImageUrl,
+      userDetails.userName,
+      userDetails.userProfileImageUrl,
       {
         accounts: {
           video: video_pda,
@@ -67,7 +64,7 @@ const useTikTok = (
         }
       }
     )
-    console.log(rx)
+    console.log(tx)
     setDescription('')
     setVideoUrl('')
     setNewVideoShow(false)

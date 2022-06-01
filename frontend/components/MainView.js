@@ -22,14 +22,13 @@ const defaultAccounts = {
     systemProgram: SystemProgram.programId
 }
 
-
 const MainView = () => {
     const [isAccount, setIsAccount] = useState(false)
     const wallet = useWallet()
     const connection = new anchor.web3.Connection(SOLANA_HOST)
 
     const program = getProgramInstance(connection, wallet)
-    const [tiktoks, setTiktoks] = useState([])
+    const [tiktoks, setTikToks] = useState([])
     const [newVideoShow, setNewVideoShow] = useState(false)
     const [description, setDescription] = useState('')
     const [videoUrl, setVideoUrl] = useState('')
@@ -37,7 +36,7 @@ const MainView = () => {
 
     const { signUp } = useAccount()
     const { getTikToks, likeVideo, createComment, newVideo, getComments } = useTikTok(
-        setTiktoks,
+        setTikToks,
         userDetail,
         videoUrl,
         description,
@@ -53,7 +52,6 @@ const MainView = () => {
         )
         try {
             const userInfo = await program.account.userAccount.fetch(user_pda)
-            console.log(userInfo)
             setUserDetail(userInfo)
             setIsAccount(true)
         } catch (e) {
@@ -65,6 +63,7 @@ const MainView = () => {
         if (wallet.connected) {
             checkAccount()
             getTikToks()
+
         }
     }, [wallet.connected])
 
@@ -87,14 +86,15 @@ const MainView = () => {
                             <h1>No Videos</h1>
                         ) : (
                             tiktoks.map((tiktok, id) => {
+                                { console.log(tiktok.account.videoUrl) }
                                 <Video
                                     key={id}
-                                    address={tiktok.publicKey.toBase58()}
                                     url={tiktok.account.videoUrl}
                                     channel={tiktok.account.creatorName}
                                     index={tiktok.account.index.toNumber()}
                                     likes={tiktok.account.likes}
                                     description={tiktok.account.description}
+                                    shares={tiktok.account.remove.toNumber()}
                                     likeVideo={likeVideo}
                                     likesAddress={tiktok.account.peopleWhoLiked}
                                     createComment={createComment}
