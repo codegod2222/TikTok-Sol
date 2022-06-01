@@ -73,7 +73,14 @@ const MainView = () => {
             {isAccount ? (
                 <div>
                     {newVideoShow && (
-                        <UploadModal />
+                        <UploadModal
+                            description={description}
+                            videoUrl={videoUrl}
+                            setDescription={setDescription}
+                            setVideoUrl={setVideoUrl}
+                            setNewVideoShow={setNewVideoShow}
+
+                        />
                     )}
                     <div className={styles.appVideos}>
                         {tiktoks.length === 0 ? (
