@@ -23,6 +23,5 @@ export function getProgramInstance(
   // Generate the program client from IDL.
   const program = new (anchor).Program(idl, programId, provider);
 
-
   return program;
 }

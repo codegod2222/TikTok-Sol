@@ -34,7 +34,7 @@ const MainView = () => {
     const [videoUrl, setVideoUrl] = useState('')
     const [userDetail, setUserDetail] = useState()
 
-    const { signUp } = useAccount()
+    const { signup } = useAccount()
     const { getTikToks, likeVideo, createComment, newVideo, getComments } = useTikTok(
         setTikToks,
         userDetail,
@@ -88,6 +88,7 @@ const MainView = () => {
                             />
                         ) : (
                             tiktoks.map((tiktok, id) => {
+                                console.log(tiktok.account.videoUrl)
                                 return <Video
                                     key={id}
                                     url={tiktok.account.videoUrl}
@@ -111,7 +112,7 @@ const MainView = () => {
                     />
                 </div>
             ) : (
-                <SignUp signUp={signUp} wallet={wallet.publicKey.toBase58()} />
+                <SignUp signup={signup} wallet={wallet.publicKey.toBase58()} />
             )}
         </>
     )
