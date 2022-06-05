@@ -4,7 +4,6 @@ import Sidebar from './Sidebar'
 import Footer from './Footer'
 import Comments from './Comments'
 const Video = ({
-  address,
   key,
   url,
   channel,
@@ -44,8 +43,6 @@ const Video = ({
   return (
     // TODO:- Video iFrame Bug, hardcoded the URL.
     <div className={styles.wrapper}>
-      {console.log(url)}
-      {console.log('hi')}
       <video
         className={styles.videoPlayer}
         loop
@@ -59,7 +56,7 @@ const Video = ({
         description={description}
         song={index}
       />
-      <SideBar
+      {/* <SideBar
         address={address}
         likes={likes}
         shares={shares}
@@ -68,7 +65,7 @@ const Video = ({
         index={index}
         likesAddress={likesAddress}
         messages={commentCount}
-      />
+      /> */}
       {showCommentsModal && (
         <Comments
           onHide={hideComments}

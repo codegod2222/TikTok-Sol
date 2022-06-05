@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import styles from '../styles/SignUp.module.css'
 
-const SignUp = ({ signUp }) => {
+const SignUp = ({ signup }) => {
   const [username, setUserName] = useState()
   const [profile, setProfile] = useState()
 
   const signUpClick = () => {
-    signUp(username, profile)
+    signup(username, profile)
   }
 
   return (

@@ -34,7 +34,7 @@ const MainView = () => {
     const [videoUrl, setVideoUrl] = useState('')
     const [userDetail, setUserDetail] = useState()
 
-    const { signUp } = useAccount()
+    const { signup } = useAccount()
     const { getTikToks, likeVideo, createComment, newVideo, getComments } = useTikTok(
         setTikToks,
         userDetail,
@@ -83,11 +83,13 @@ const MainView = () => {
                     )}
                     <div className={styles.appVideos}>
                         {tiktoks.length === 0 ? (
-                            <h1>No Videos</h1>
+                            // <h1>No Videos</h1>
+                            <Video
+                            />
                         ) : (
                             tiktoks.map((tiktok, id) => {
+                                console.log(tiktok.account.videoUrl)
                                 return <Video
-                                    address={tiktok.address}
                                     key={id}
                                     url={tiktok.account.videoUrl}
                                     channel={tiktok.account.creatorName}
@@ -110,7 +112,7 @@ const MainView = () => {
                     />
                 </div>
             ) : (
-                <SignUp signUp={signUp} wallet={wallet.publicKey.toBase58()} />
+                <SignUp signup={signup} wallet={wallet.publicKey.toBase58()} />
             )}
         </>
     )
