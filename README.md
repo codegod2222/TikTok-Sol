@@ -11,10 +11,3 @@ TikTok is a video sharing app that allows users to create short videos. This pro
 
 My focus for this project was to learn more about Web 3.0. 
 
-## Optimizations
-
-TODO:-
-
-## Lessons Learned
-
-TODO:-
